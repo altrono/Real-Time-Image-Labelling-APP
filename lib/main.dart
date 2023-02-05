@@ -23,11 +23,13 @@ class _CameraScreenState extends State<CameraScreen> {
   String result = "results to be shown here";
 
   //TODO declare ImageLabeler
-
+  dynamic imageLabeler;
   @override
   void initState() {
     super.initState();
     //TODO initialize labeler
+    final ImageLabelerOptions options = ImageLabelerOptions(confidenceThreshold: 0.7);
+    imageLabeler = ImageLabeler(options: options);
 
     //TODO initialize the controller
     controller = CameraController(_cameras[0], ResolutionPreset.high);
