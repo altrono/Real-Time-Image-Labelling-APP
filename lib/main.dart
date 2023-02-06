@@ -40,7 +40,7 @@ class _CameraScreenState extends State<CameraScreen> {
         return;
       }
       controller.startImageStream((image) => {
-        if (isBusy == true){
+        if (isBusy != true){
           img = image, doImageLabeling(), isBusy = true
         }
       });
@@ -74,11 +74,11 @@ class _CameraScreenState extends State<CameraScreen> {
       result;
     });
     isBusy = false;
-
   }
 
   CameraImage? img;
   InputImage getInputImage() {
+
     final WriteBuffer allBytes = WriteBuffer();
     for (final Plane plane in img!.planes) {
       allBytes.putUint8List(plane.bytes);
